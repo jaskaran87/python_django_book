@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+{% block title %} My Blog {% endblock %}
+
+{% block content %}
+
+	<h1> My Blog </h1>
+	{% if posts %}
+	 
+		{% for here in posts %}
+			<h2>
+				<a href="{{ here.get_absolute_url }}">
+					{{ here.title }}
+				</a>
+				
+			</h2>
+
+		{% endfor %}
+	{% else %}
+		<p>No polls are available.</p>
+	{% endif %}
+		
+	{% include "blog/post/pagination.html" with page=posts %}
+	{% include "blog/post/pagination.html" with page=page_obj %}
+{% endblock %}
